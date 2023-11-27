@@ -1,0 +1,176 @@
+﻿@model List<HealthyMe.Models.FoodNutritionModel>
+
+<style>
+    .nutrition-label {
+        border: 2px solid #ddd;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        max-width: 600px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .label-heading {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .label-text {
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .nutrient-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .nutrient-item {
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .ingredients {
+        margin-top: 15px;
+        font-size: 16px;
+        color: #555;
+        text-align:justify;
+    }
+
+    .nutrient-value {
+        margin-left: 15px; /* Adjust the spacing as needed */
+        color: #555;
+       
+    }
+
+    .nutrient-table {
+        width: 100%;
+        margin-top: 10px;
+        border-collapse: collapse;
+        border-bottom: 5px solid black;
+       
+    }
+
+        .nutrient-table th, .nutrient-table td {
+            border: none;
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid black;
+        }
+
+        .nutrient-table th {
+            background-color: #f2f2f2;
+        }
+
+        .nutrient-table td:last-child {
+            text-align: right;
+        }
+
+
+</style>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var food in Model)
+    {
+        <div class="nutrition-label container mb-5">
+            <div>
+                <p class="label-heading">@food.FoodName</p>
+
+                <!-- Product Details -->
+                <p class="label-text"><b>Brand: </b> @food.BrandName</p>
+                <p class="label-text"><b>Category:</b> @food.BrandedFoodCategory</p>
+                <p class="label-text"><b>Serving Size:</b> @food.ServingSize g</p>
+
+                <!-- Nutrition Label -->
+                <p class="label-heading">Nutrition Facts</p>
+                <table class="nutrient-table">
+                    <tbody>
+                            <tr>
+                            <td class ="nutrient-item"> Calories:</td>
+                                <td>
+                                    <span class="nutrient-value">
+                                    @food.Calories kcal
+                                    </span>
+
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="nutrient-item"> Protein:</td>
+                            <td>
+                                <span class="nutrient-value">
+                                    @food.Protein g
+                                </span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-item"> Fat:</td>
+                            <td>
+                                <span class="nutrient-value">
+                                    @food.Fat g
+                                </span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-item"> Carbohydrates:</td>
+                            <td>
+                                <span class="nutrient-value">
+                                    @food.Carbs g
+                                </span>
+
+                            </td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+                    <!-- Additional Nutrients -->
+                    @if (food.AdditionalNutrients != null && food.AdditionalNutrients.Any())
+                    {
+                        <table class="nutrient-table">
+                            <h4>Nutrients</h4>
+                            <tbody>
+                                @foreach (var nutrient in food.AdditionalNutrients)
+                                {
+                                    // Get the nutrient name before the comma
+                                    var nutrientName = nutrient.Key.Split(',')[0].Trim();
+
+                                    <tr>
+                                        <td>@nutrientName</td>
+
+                                        <td>
+                                            <span class="nutrient-value">
+                                                @(nutrient.Value.HasValue ? nutrient.Value.ToString() : "N/A")mg
+                                            </span>
+                                           
+                                        </td>
+                                    </tr>
+                                    
+                                }
+                            </tbody>
+
+                        </table>
+                    }
+
+                <!-- Ingredients -->
+                <p class="label-heading">Ingredients:</p>
+                <p class="ingredients">@food.Ingredients</p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No details available for the selected food.</p>
+}
+
+

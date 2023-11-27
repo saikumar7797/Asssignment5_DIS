@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "AboutUs Page";
+}
+<div class="container pt-5 pb-5">
+    <div>
+        <h2>About Project</h2>
+        <p>
+            This comprehensive web application serves as a powerful tool for nutrition tracking. It boasts user
+            authentication, CRUD functionalities, and dynamic Chart.js visualizations. Users can seamlessly log in,
+            add,
+            edit, and delete foods, meals, and plans, with the macronutrient charts updating in real-time. The
+            polished
+            and user-friendly UI adapts intelligently based on the user's status, and local storage efficiently
+            manages
+            data storage. Its versatility makes it an ideal foundation for
+            health and nutrition-focused applications, offering a holistic approach to user engagement and data
+            management. <br>
+            Built on the ASP.NET Core framework, the website employs Entity Framework for data access, 
+            likely interfacing with a relational database to store user and nutritional data securely. 
+            A noteworthy aspect is the integration of user authentication and authorization, evident through the utilization of Identity for user management.
+            HealthyMe leverages the FoodCentral API to access a vast database of food-related information, enabling users to retrieve detailed nutritional data for a wide variety of food items. 
+            This integration enhances the app's capability to provide accurate and comprehensive insights into users' dietary choices.
+            <br> <b> Features</b> <br>
+            1.User Authentication:
+            User registration and login functionality.<br>
+            2.CRUD Operations:
+
+            Create, read, update, and delete operations for managing foods, meals.<br>
+            3.Nutrition Tracking:
+
+            Log and track daily food intake with details such as name, quantity, meal, and date.<br>
+            4.Dynamic Chart.js Visualizations:
+
+            Real-time visualizations of macronutrient intake for a comprehensive view of dietary habits using
+            Chartjs<br>
+
+
+        </p>
+    </div>
+
+
+    <div class="container p-3 about-links">
+        <p><b>API data-The FoodData Central API</b> - https://fdc.nal.usda.gov/api-guide.html</p>
+        <p>
+            <b>Endpoints</b> - <br>
+            /food/{fdcId} GET Fetches details for one food item by FDC ID<br>
+            /foods GET | POST Fetches details for multiple food items using input FDC IDs<br>
+            /foods/list GET | POST Returns a paged list of foods, in the 'abridged' format<br>
+            /foods/search GET | POST Returns a list of foods that matched search (query) keywords<br>
+        </p>
+        <p> <b>Github </b> - https://github.com/saikumar7797/Assignment3_DIS</p>
+
+    </div>
+
+    <div class='container p-3 '>
+        <h3>Data model:</h3>
+        <img class="imgabout" src="~/assets/ERD-diagram.png" alt="">
+    </div>
+
+    <h3>About us</h3>
+    <div class="about-table">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>About us</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p>Jyothi Venkata Naga Sai Kumar Maturi</p>
+
+                        <img src="~/assets/sai.jpg" alt="" srcset="">
+                        <p>EmailId : Jmaturi@usf.edu</p>
+                    </td>
+                    <td>
+                        <p>
+                            I am Jyothi Venkata naga sai kumar maturi, a master's student at the University of South
+                            Florida
+                            studying business
+                            analytics and information systems. I worked on the page's concept and programming as its
+                            primary developer.
+                            and implemented API Communication and Data Retrieval.
+
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Nikhil Reddy Kotwal</p>
+                        <img src="~/assets/nikhil1.jpg" alt="" srcset="">
+                        <p>Email Id : nikhilreddykotwal@usf.edu</p>
+
+                    </td>
+                    <td>
+                        <p>
+                            I am Nikhil Reddy kotwal currently pursuing masters in Business analytics and Information
+                            systems from USF,
+                            Tampa. I worked on Data Processing and Model Creation,
+                            blog and about us page.I tested
+                            and deployed the code in the server.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Mohammed Afeef Shaik</p>
+                        <img src="~/assets/afeef.jpg" alt="" srcset="">
+                        <p>Email Id : mshaik121@usf.edu</p>
+                    </td>
+                    <td>
+                        <p>
+                            I am Mohammed Afeef Shaik. Currently I am pursuing my masters in Business analytics and
+                            information systems. I have worked on Nutrient Filtering and Additional Nutrient Handling,
+                            page and made visualizations using ChartJS.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Tarun Velagada</p>
+                        <img src="~/assets/tarun.jpg" alt="" srcset="">
+                        <p>Email Id : tarunvelagada@usf.edu</p>
+                    </td>
+                    <td>
+                        <p>
+                            I am Tarun velagada, Majoring in business analytics and information systems. I worked on
+                            CSS styling for
+                            this website. I worked on home page ,landing page,Error Handling and Logging.
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

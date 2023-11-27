@@ -1,0 +1,38 @@
+﻿@model List<HealthyMe.Models.Food>
+@{
+    ViewData["Title"] = "Nutrition Page";
+}
+<div class="container mt-4">
+<h2 class="text-center">Food Search</h2>
+
+<form asp-controller="Nutrition" asp-action="NutritionFoodSearch" method="get" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="query" class="form-control" placeholder="Search for food..." />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+</div>
+@if (Model != null && Model.Any())
+{
+    <form id="nutritionForm" asp-controller="Nutrition" asp-action="GetNutritionDetails" method="post">
+        <p class="font-weight-bold">Please select from the list:</p>
+        <div class="form-row container">
+            <div class="col-md-4 mb-3">
+                <label for="query">Food:</label>
+                <select id="foodSelect" name="query" class="form-control">
+                    <option value="">Please Select</option>
+                    @foreach (var result in Model)
+                    {
+                        <option value="@result.FdcId">@result.FoodName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success container">Know about this!</button>
+    </form>
+
+
+}

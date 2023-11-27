@@ -1,0 +1,68 @@
+﻿@model List<HealthyMe.Models.Food>
+@{
+    ViewData["Title"] = "FoodSearch Page";
+}
+
+@if (ViewBag.EditMode == true)
+{
+    <div class="alert alert-info" role="alert">
+        You are in edit mode. You can search for a new food item to replace the existing one.
+    </div>
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Food Search</h2>
+
+    <form asp-controller="FoodSearch" asp-action="SearchFood" method="get" class="mb-4">
+        @if (ViewBag.EditMode == true)
+        {
+            <input type="hidden" name="ExistingFoodId" value="@ViewBag.ExistingFoodId" />
+        }
+        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Search for food..." />
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+
+    @if (Model != null && Model.Any())
+    {
+        <form asp-controller="FoodSearch" asp-action="selectedFood" method="post">
+            <p class="font-weight-bold">Please select from the list:</p>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="query">Food:</label>
+                    <select name="query" class="form-control">
+                        <option value="">Please Select</option>
+                        @foreach (var result in Model)
+                        {
+                            <option value="@result.FdcId">@result.FoodName</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="mealType">Meal Type:</label>
+                    <select name="mealType" class="form-control">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Snack">Snack</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="quantity">Serving Size:</label>
+                    <input type="number" name="quantity" class="form-control" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="date">Date:</label>
+                    <input type="date" name="date" class="form-control" required />
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Add this one!</button>
+        </form>
+
+    }
+</div>
